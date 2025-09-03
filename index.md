@@ -7,7 +7,7 @@ Welcome to my ICS4U portfolio. I’ll use this site to post my work and reflecti
 - 📝 Blog/Reflection: [Reflection #1](./posts/first_reflection.md)
 [Reflection #2](./posts/second.md)
 ## About me
-A short intro (interests, goals, tools I’m learning).
+Hi my name is Alina and this is my first year learning how to properly code. My interests are art and exploring. I love learning new things.
 
 ---
 *Update this page by editing `index.md` in your repository.*
