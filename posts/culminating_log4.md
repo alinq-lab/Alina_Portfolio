@@ -1,8 +1,8 @@
-Arrays & Data Structure Log
+# Arrays & Data Structure Log
 
 a) Concept implemented:
 
-Topic: Arrays (data structure)
+## Topic: Arrays (data structure)
 
 Relevant code snippet:
 
@@ -28,7 +28,7 @@ void updateHighScores() {
 
 b) Where and why it was used:
 
-<u>Where:</u>
+## Where:
 
 The array highScores is used whenever a player wins, loses, or finishes a game to keep track of the top 5 scores.
 
@@ -36,7 +36,7 @@ The loadHighScores() function is called in setup() so that previous scores are l
 
 The updateHighScores() function is called when the game ends (win or lose) to check if the player’s score should be saved.
 
-Why implemented this way:
+## Why implemented this way:
 
 An array is perfect because we know the number of high scores we want to store (maxHighScores = 5).
 
@@ -46,9 +46,9 @@ Sorting ensures that we can always keep track of the lowest and highest scores e
 
 c) Challenges and how they were fixed:
 
-Challenge: Handling cases when the high scores file is empty or has fewer than 5 scores.
+## Challenge: Handling cases when the high scores file is empty or has fewer than 5 scores.
 
-Solution: Added a check in loadHighScores():
+## Solution: Added a check in loadHighScores():
 
 if (i < lines.length) highScores[i] = int(lines[i]);
 else highScores[i] = 0;
@@ -56,13 +56,13 @@ else highScores[i] = 0;
 
 This fills empty spots with 0, preventing errors.
 
-Challenge: Inserting a new score while keeping the top scores updated.
+## Challenge: Inserting a new score while keeping the top scores updated.
 
-Solution: Placed the new score at the end of the array and used Arrays.sort() to automatically order the array. This removed the need for complex loops or manual shifting.
+## Solution: Placed the new score at the end of the array and used Arrays.sort() to automatically order the array. This removed the need for complex loops or manual shifting.
 
-Challenge: Displaying scores in order on the screen.
+## Challenge: Displaying scores in order on the screen.
 
-Solution: Using a simple for-loop:
+## Solution: Using a simple for-loop:
 
 for (int i = 0; i < maxHighScores; i++) {
   text((i+1) + ". " + highScores[i], width/2, 100 + i*30);
