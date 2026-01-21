@@ -34,3 +34,12 @@ Using arrays allows me to:
 Purpose of the code:
 Load high scores from a file.
 Ensure the game can display, update, and save scores.
+
+c)
+Challenge 1:
+
+Initially, I tried reading directly into int[] highScores, but loadStrings() always returns strings, not integers.
+
+Fix:
+
+I created a String[] lines array first, then converted each element to an integer
