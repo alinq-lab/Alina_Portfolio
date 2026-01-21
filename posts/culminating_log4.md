@@ -28,7 +28,7 @@ void updateHighScores() {
 
 b) Where and why it was used:
 
-Where:
+<u>Where:</u>
 
 The array highScores is used whenever a player wins, loses, or finishes a game to keep track of the top 5 scores.
 
