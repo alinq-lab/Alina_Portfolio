@@ -1,45 +1,69 @@
-Arrays & Data Structures
-a) Concept Implemented
-Topic: Arrays & Array Manipulation (with file I/O)
-This program uses arrays as its main data structure.
-Arrays are used because they allow the program to store multiple related values under one variable name and access them using an index.
-I implemented arrays to store multiple high scores in the game. The lines[] array temporarily holds data read from a file. 
-The highScores[] array stores integer scores that the game uses to track top scores.
-This demonstrates array usage, array indexing, and looping.
+Arrays & Data Structure Log
 
-code snippet:
+a) Concept implemented:
 
-String[] lines = loadStrings("highscores.txt");
-for (int i = 0; i < maxHighScores; i++) {
-  if (i < lines.length) highScores[i] = int(lines[i]);
-  else highScores[i] = 0;
+Topic: Arrays (data structure)
+
+Relevant code snippet:
+
+int maxHighScores = 5;        // Maximum number of high scores to store
+int[] highScores = new int[maxHighScores]; // Array to store the scores
+
+// Load scores from file
+void loadHighScores() {
+  String[] lines = loadStrings("highscores.txt");
+  for (int i = 0; i < maxHighScores; i++) {
+    if (i < lines.length) highScores[i] = int(lines[i]);
+    else highScores[i] = 0;
+  }
 }
 
-b) 
-Arrays were used to:
-- Store multiple high scores at once
-- Keep scores ordered from highest to lowest
-- Load and save scores using a text file
-- Display scores with a ranking number
+// Update array with new score
+void updateHighScores() {
+  highScores[maxHighScores - 1] = score; // add the new score at the end
+  Arrays.sort(highScores);               // sort array in ascending order
+  saveHighScores();                      // save updated scores to file
+}
 
-My code is used in the loadHighScores() function and throughout the high score system (updateHighScores(), saveHighScores(), showHighScores()).
+
+b) Where and why it was used:
+
+Where:
+
+The array highScores is used whenever a player wins, loses, or finishes a game to keep track of the top 5 scores.
+
+The loadHighScores() function is called in setup() so that previous scores are loaded when the game starts.
+
+The updateHighScores() function is called when the game ends (win or lose) to check if the player’s score should be saved.
+
 Why implemented this way:
-- High scores need to be saved to a file and sortable.
-Using arrays allows me to:
-- Easily store multiple scores.
-- Access any score via its index (e.g., highScores[0] is the highest).
-- Loop through scores to insert, shift, and update them in the leaderboard.
-- String[] lines is used because files store text. Reading it into a string array lets me convert it to integers later
 
-Purpose of the code:
-Load high scores from a file.
-Ensure the game can display, update, and save scores.
+An array is perfect because we know the number of high scores we want to store (maxHighScores = 5).
 
-c)
-Challenge 1:
+Arrays allow easy access by index (for adding new scores, sorting, and displaying).
 
-Initially, I tried reading directly into int[] highScores, but loadStrings() always returns strings, not integers.
+Sorting ensures that we can always keep track of the lowest and highest scores easily.
 
-Fix:
+c) Challenges and how they were fixed:
 
-I created a String[] lines array first, then converted each element to an integer
+Challenge: Handling cases when the high scores file is empty or has fewer than 5 scores.
+
+Solution: Added a check in loadHighScores():
+
+if (i < lines.length) highScores[i] = int(lines[i]);
+else highScores[i] = 0;
+
+
+This fills empty spots with 0, preventing errors.
+
+Challenge: Inserting a new score while keeping the top scores updated.
+
+Solution: Placed the new score at the end of the array and used Arrays.sort() to automatically order the array. This removed the need for complex loops or manual shifting.
+
+Challenge: Displaying scores in order on the screen.
+
+Solution: Using a simple for-loop:
+
+for (int i = 0; i < maxHighScores; i++) {
+  text((i+1) + ". " + highScores[i], width/2, 100 + i*30);
+}
